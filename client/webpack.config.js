@@ -4,7 +4,6 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
 const { InjectManifest } = require('workbox-webpack-plugin');
 
-// TODO: Add and configure workbox plugins for a service worker and manifest file.
 
 module.exports = () => {
   return {
@@ -24,23 +23,23 @@ module.exports = () => {
         filename: 'index.html',
       }),
       new WebpackPwaManifest({
-        name: 'J.A.T.E',
-        short_name: 'jate',
-        description: 'My Progressive Web App',
-        start_url: '/',
-        display: 'standalone',
-        background_color: '#ffffff',
-        theme_color: '#000000',
+        name: 'Just Another Text Editor',
+        short_name: 'J.A.T.E',
+        description: 'Takes notes with JavaScript syntax highlighting!',
+        background_color: '#225ca3',
+        theme_color: '#225ca3',
+        start_url: './',
+        publicPath: './',
         icons: [
           {
-            src: path.resolve('./src/assets/icon.png'),
+            src: path.resolve('src/images/logo.png'),
             sizes: [96, 128, 192, 256, 384, 512],
             destination: path.join('assets', 'icons'),
           },
         ],
       }),
       new InjectManifest({
-        swSrc: './src/service-worker.js',
+        swSrc: './src/src-sw.js',
         swDest: 'service-worker.js',
       }),
     ],
